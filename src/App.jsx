@@ -23,9 +23,15 @@ function Slip() {
     const [copies, setCopies] = useState("");
     const [list, setList] = useState([]);
     const [totalCopies, setTotalCopies] = useState(0);
+    const [message, setMessage] = useState("");
 
     function addItem() {
-        if (title.trim() === "" || price.trim() === "" || copies.trim() === "") {
+        if (copies.trim() === "") {
+            setMessage("Type the copies");
+            return;
+        }
+
+        if (title.trim() === "" || price.trim() === "") {
             return;
         }
 
@@ -41,6 +47,7 @@ function Slip() {
         setTitle("");
         setPrice("");
         setCopies("");
+        setMessage("");
     }
 
     return (
@@ -69,6 +76,8 @@ function Slip() {
             />
 
             <button onClick={addItem}>Add</button>
+
+            <p style={styles.message}>{message}</p>
 
             <OrderList items={list} />
 
@@ -124,6 +133,10 @@ const styles = {
         justifyContent: "space-between",
         padding: "10px",
         borderBottom: "1px solid #ddd"
+    },
+    message: {
+        color: "red",
+        fontWeight: "bold"
     },
     footer: {
         backgroundColor: "green",
