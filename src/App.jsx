@@ -34,6 +34,8 @@ function Slip() {
             <button>Add</button>
 
             <h3>Copies: 0</h3>
+
+            <p>{title && price ? `${title} - ${price}` : ""}</p>
         </div>
     );
 }
