@@ -1,6 +1,22 @@
 
 import { useState } from "react";
 
+function OrderList({ items }) {
+    return (
+        <div>
+            <h3>Order List</h3>
+
+            {items.map((item, index) => (
+                <div style={styles.item} key={index}>
+                    <span>{item.title}</span>
+                    <span>{item.price}</span>
+                    <span>{item.copies}</span>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 function Slip() {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
@@ -54,15 +70,7 @@ function Slip() {
 
             <button onClick={addItem}>Add</button>
 
-            <h3>Order List</h3>
-
-            {list.map((item, index) => (
-                <div style={styles.item} key={index}>
-                    <span>{item.title}</span>
-                    <span>{item.price}</span>
-                    <span>{item.copies}</span>
-                </div>
-            ))}
+            <OrderList items={list} />
 
             <h3>Copies: {totalCopies}</h3>
         </div>
