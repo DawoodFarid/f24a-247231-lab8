@@ -4,7 +4,7 @@ import { useState } from "react";
 function Slip() {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
-    const [copies, setCopies] = useState(0);
+    const [copies, setCopies] = useState("");
 
     return (
         <div style={styles.slip}>
@@ -25,9 +25,9 @@ function Slip() {
             />
 
             <input
-                type="number"
+                type="text"
                 placeholder="Copies"
-                value={copies === 0 ? "" : copies}
+                value={copies}
                 onChange={(e) => setCopies(e.target.value)}
             />
 
