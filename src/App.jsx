@@ -22,8 +22,12 @@ function Slip() {
     const [price, setPrice] = useState("");
     const [copies, setCopies] = useState("");
     const [list, setList] = useState([]);
-    const [totalCopies, setTotalCopies] = useState(0);
     const [message, setMessage] = useState("");
+
+    const totalCopies = list.reduce(
+        (total, item) => total + item.copies,
+        0
+    );
 
     function addItem() {
         if (copies.trim() === "") {
@@ -42,7 +46,6 @@ function Slip() {
         };
 
         setList([...list, newItem]);
-        setTotalCopies(totalCopies + Number(copies));
 
         setTitle("");
         setPrice("");
@@ -145,6 +148,5 @@ const styles = {
         marginTop: "30px"
     }
 };
-
 
 export default App;
