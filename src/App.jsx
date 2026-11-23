@@ -5,7 +5,6 @@ function Slip() {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [copies, setCopies] = useState(0);
-    const [list, setList] = useState([]);
 
     return (
         <div style={styles.slip}>
@@ -35,12 +34,6 @@ function Slip() {
             <button>Add</button>
 
             <h3>Copies: 0</h3>
-
-            <div>
-                {list.map((item, index) => (
-                    <p key={index}>{item.title} - {item.price}</p>
-                ))}
-            </div>
         </div>
     );
 }
