@@ -1,4 +1,50 @@
 
+import { useState } from "react";
+
+function Slip() {
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState("");
+    const [copies, setCopies] = useState(0);
+    const [list, setList] = useState([]);
+
+    return (
+        <div style={styles.slip}>
+            <h2>The Book Slip</h2>
+
+            <input
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <input
+                type="number"
+                placeholder="Price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+            />
+
+            <input
+                type="number"
+                placeholder="Copies"
+                value={copies === 0 ? "" : copies}
+                onChange={(e) => setCopies(e.target.value)}
+            />
+
+            <button>Add</button>
+
+            <h3>Copies: 0</h3>
+
+            <div>
+                {list.map((item, index) => (
+                    <p key={index}>{item.title} - {item.price}</p>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function App() {
     return (
         <div style={styles.page}>
@@ -7,7 +53,7 @@ function App() {
             </header>
 
             <main style={styles.main}>
-                <h2>The Book Slip</h2>
+                <Slip />
             </main>
 
             <footer style={styles.footer}>
@@ -26,11 +72,20 @@ const styles = {
     },
     header: {
         backgroundColor: "green",
-        color: "white",
         padding: "25px"
     },
     main: {
         padding: "40px"
+    },
+    slip: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "15px",
+        maxWidth: "400px",
+        margin: "auto",
+        padding: "25px",
+        backgroundColor: "white",
+        borderRadius: "10px"
     },
     footer: {
         backgroundColor: "green",
